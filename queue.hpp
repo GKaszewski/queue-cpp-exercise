@@ -9,11 +9,11 @@ public:
     Queue<T>(){}
     ~Queue<T>(){}
 
-    bool isEmpty(){
+    bool isEmpty() {
         return data.empty();
     }
     
-    void push(T & obj){
+    void push(const T & obj) {
         data.push_back(obj);
     }
     
@@ -23,8 +23,10 @@ public:
     
     T pop(){
         T element;
-        if(!data.empty()){
-            element = data.back();
+        if(!data.empty()) {
+            element = data.front();
+            data.erase(data.begin());
+            return element;
         }
         data.pop_back();
         return element;
